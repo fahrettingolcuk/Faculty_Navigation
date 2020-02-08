@@ -8,18 +8,26 @@ using Button = UnityEngine.UI.Button;
 
 public class UIManager : MonoBehaviour
 {
-    private Points myPoints;
     private readonly List<string> _pointStringList = new List<string>();
-    
     private string _startLoc, _finishLoc;
     public int StartLocIndex { get; set; }
+    private GameObject _startObject, _finishObject;
+    public GameObject StartObject
+    {
+        get => _startObject;
+        set => _startObject = value;
+    }
 
+    public GameObject FinishObject
+    {
+        get => _finishObject;
+        set => _finishObject = value;
+    }
     public int FinishLocIndex { get; set; }
-
-
+    private FloorManager _floorManager;
     private void Start()
     {
-       
+        _floorManager = gameObject.GetComponent<FloorManager>();
         Variables.Instance().locationButton.onClick.AddListener(IsPanelState);
         Variables.Instance().playButton.onClick.AddListener(PlayAnimation);
         SetDropDownList();
@@ -39,6 +47,25 @@ public class UIManager : MonoBehaviour
     }
     public void IsPanelState()
     {
+        if (!Variables.Instance().locationSelectPanel.activeInHierarchy)
+        {
+            _floorManager.WholeFloorsState(true);
+        }
+        else
+        {
+            switch (_floorManager.currentFloor)
+            {
+                case FloorManager.Floor.First:
+                    _floorManager.Floor0Management();
+                    break;
+                case FloorManager.Floor.Second:
+                    _floorManager.Floor1Management();
+                    break;
+                case FloorManager.Floor.Third:
+                    _floorManager.Floor2Management();
+                    break;
+            }
+        }
         Variables.Instance().locationSelectPanel.SetActive(!Variables.Instance().locationSelectPanel.activeInHierarchy);
     }
 
@@ -52,6 +79,7 @@ public class UIManager : MonoBehaviour
         {
             StartLocIndex = FindIndex(Variables.Instance().startLocationDropDown.options[Variables.Instance().startLocationDropDown.value].text);
             FinishLocIndex = FindIndex(Variables.Instance().finishLocationDropDown.options[Variables.Instance().finishLocationDropDown.value].text);
+            findGameObject(Variables.Instance().startLocationDropDown.options[Variables.Instance().startLocationDropDown.value].text,Variables.Instance().finishLocationDropDown.options[Variables.Instance().finishLocationDropDown.value].text);
         }
     }
     
@@ -63,13 +91,20 @@ public class UIManager : MonoBehaviour
             _pointStringList.Add(points.name);
         }
     }
+
+    private void findGameObject(string start,string finish)
+    {
+        _startObject = GameObject.Find(start);
+        _finishObject = GameObject.Find(finish);
+        
+    }
     
     private int FindIndex(string location)
     {
         var _search=0;
         for (var i = 0; i < _pointStringList.Count; i++)
         {
-            if(location== _pointStringList[i])
+            if(location == _pointStringList[i])
             {
                 _search = i;
                 break;

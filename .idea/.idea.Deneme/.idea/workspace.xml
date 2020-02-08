@@ -1,12 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a6df7db2-5405-4278-8d3b-aa502bb651ad" name="Default Changelist" comment="" />
+    <list default="true" id="a6df7db2-5405-4278-8d3b-aa502bb651ad" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Deneme/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Deneme/.idea/indexLayout.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Deneme/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Deneme/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/FloorManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/FloorManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Pathfinding.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Pathfinding.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PositionManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PositionManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UIManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UIManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Variables.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Variables.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/CurrentLayout.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/Library/CurrentLayout.dwlt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/InspectorExpandedItems.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Library/InspectorExpandedItems.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/ScriptAssemblies/Assembly-CSharp.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Library/ScriptAssemblies/Assembly-CSharp.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/ScriptAssemblies/Assembly-CSharp.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Library/ScriptAssemblies/Assembly-CSharp.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/StateCache/SceneView/b129ce-mainStage.json" beforeDir="false" afterPath="$PROJECT_DIR$/Library/StateCache/SceneView/b129ce-mainStage.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/assetDatabase3" beforeDir="false" afterPath="$PROJECT_DIR$/Library/assetDatabase3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/af/af201d78af175e8409ea25f02148d02e" beforeDir="false" afterPath="$PROJECT_DIR$/Library/metadata/af/af201d78af175e8409ea25f02148d02e" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/e9/e99533d9426dfb145b5a8b19f709120e" beforeDir="false" afterPath="$PROJECT_DIR$/Library/metadata/e9/e99533d9426dfb145b5a8b19f709120e" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/f7/f751118a1b033794d89e8afaaa35c993" beforeDir="false" afterPath="$PROJECT_DIR$/Library/metadata/f7/f751118a1b033794d89e8afaaa35c993" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/f7/f79fffbc076c16f43a8712c8de02637d" beforeDir="false" afterPath="$PROJECT_DIR$/Library/metadata/f7/f79fffbc076c16f43a8712c8de02637d" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/fd/fd7ac1db23e86ce44b0319d449129037" beforeDir="false" afterPath="$PROJECT_DIR$/Library/metadata/fd/fd7ac1db23e86ce44b0319d449129037" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand />
+    <select />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/MoveTarget.cs" root0="FORCE_HIGHLIGHTING" />
@@ -27,18 +64,19 @@
         <option value="$PROJECT_DIR$/Assets/Grid.cs" />
         <option value="$PROJECT_DIR$/Assets/UIManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/MoveTarget.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/PositionManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/CameraRotation.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Pathfinding.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Variables.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Grid.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/UIManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Points.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/PositionManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UIManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Variables.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/FloorManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Pathfinding.cs" />
       </list>
     </option>
   </component>
   <component name="ProjectId" id="1SpgLTmvGJNTdRLP4qfQGgQenCo" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
     <property name="Discover.Launch.Via.Unity" value="true" />
     <property name="Rider.DefaultBreakpoints.AreToggled" value="true" />
@@ -102,6 +140,13 @@
       <workItem from="1576069191282" duration="626000" />
       <workItem from="1576103698741" duration="6511000" />
       <workItem from="1576129613254" duration="1255000" />
+      <workItem from="1577313596552" duration="303000" />
+      <workItem from="1580161935504" duration="1813000" />
+      <workItem from="1580206610057" duration="4581000" />
+      <workItem from="1580292045377" duration="11709000" />
+      <workItem from="1580382434498" duration="8959000" />
+      <workItem from="1580583690874" duration="2727000" />
+      <workItem from="1581076240801" duration="9366000" />
     </task>
     <servers />
   </component>
@@ -110,8 +155,22 @@
   </component>
   <component name="UnityProjectConfiguration" hasMinimizedUI="true" />
   <component name="UnityUnitTestConfiguration" currentTestLauncher="EditMode" />
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <option name="LOCAL_CHANGES_DETAILS_PREVIEW_SHOWN" value="true" />
+    <option name="LAST_COMMIT_MESSAGE" value="" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

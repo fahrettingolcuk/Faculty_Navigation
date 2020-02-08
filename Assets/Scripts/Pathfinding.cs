@@ -6,28 +6,29 @@ using UnityEngine;
 public class Pathfinding : MonoBehaviour
 {
     private Grid _gridReference;
-    public Transform StartPosition;//Starting position to pathfind from
-    public Transform TargetPosition;//Starting position to pathfind to
-
-    [SerializeField] private GameObject _orderPath;
-    [SerializeField] private GameObject _sphere;
+    public Transform StartPosition;//Starting position to pathfind from      //MAVI KUTU BASLANGIC
+    public Transform TargetPosition;//Starting position to pathfind to       //MAVI KUTU BİTİS
+    public Transform MiddlePosition;
+    
+    
+    
+    [SerializeField] private GameObject _orderPath;      //PATHLERİN DÜZENLENDİĞİ ANA GAMEOBJECT
+    [SerializeField] private GameObject _sphere;        //TOPUMUZ
     private GameObject[] _childs;
-    private GameObject _gameObject;
+    private GameObject _pointRoot;
     private UIManager _uiManager;
-    private GameObject _o;
-    private GameObject _gameObject1;
-    private UIManager _uiManager1;
+
+    private FloorManager _floorManager;
+    
+    
     private bool _firstLocationSelect;
     private int _index1, _index2;
 
     private void Start()
     {
-        _gameObject1 = GameObject.Find("GameManager");
-        _uiManager1 = _gameObject1.GetComponent<UIManager>();
-        _o = GameObject.Find("Points");
+        _floorManager = gameObject.GetComponent<FloorManager>();
         _uiManager = GameObject.Find("GameManager").GetComponent<UIManager>();
-        _gameObject = GameObject.Find("Points");
-        _childs = GameObject.FindGameObjectsWithTag("pathCube");
+        
     }
 
     private void Awake()//When the program starts
@@ -36,32 +37,146 @@ public class Pathfinding : MonoBehaviour
         _gridReference = GetComponent<Grid>();
     }
 
-    private void Update()//Every frame
+    private void LocationSettings()
     {
         if(Variables.Instance().isLocationSelected)
         {
-            if (_firstLocationSelect)
+            switch (_uiManager.StartObject.tag)
             {
-                GameObject.Find("Places").transform.GetChild(_index1).GetChild(0).gameObject.SetActive(false);
-                GameObject.Find("Places").transform.GetChild(_index2).GetChild(0).gameObject.SetActive(false); 
+                case "Floor0_Places":
+                    _floorManager.Floor0Management();
+                    break;
+                case "Floor1_Places":
+                    _floorManager.Floor1Management();
+                    break;
+                case "Floor2_Places":
+                    _floorManager.Floor2Management();
+                    break;
             }
-            StartPosition.position = _gameObject.transform
-                .GetChild(_uiManager.StartLocIndex).transform.position;
-            TargetPosition.position = _o.transform
-                .GetChild(_uiManager1.FinishLocIndex).transform.position;
-            Debug.Log(_uiManager.StartLocIndex+""+_uiManager.FinishLocIndex);
-            GameObject.Find("Places").transform.GetChild(_uiManager.StartLocIndex).GetChild(0).gameObject.SetActive(true);
-            GameObject.Find("Places").transform.GetChild(_uiManager.FinishLocIndex).GetChild(0).gameObject.SetActive(true);
+            
+            //TODO LOCATION SELECT REMOVE BEFORE LOCATIONS
+//            if (_firstLocationSelect)
+//            {
+//                switch (_uiManager.tag1)
+//                {
+//                    case "Floor0_Places":
+//                       GameObject.Find("Floor0").transform.GetChild(0).GetChild(_index1).GetChild(0).gameObject.SetActive(false);
+//                        break;
+//                    case "Floor1_Places":
+//                        GameObject.Find("Floor1").transform.GetChild(0).GetChild(_index1).GetChild(0).gameObject.SetActive(false);
+//                        break;
+//                    case "Floor2_Places":
+//                        GameObject.Find("Floor2").transform.GetChild(0).GetChild(_index1).GetChild(0).gameObject.SetActive(false);
+//                        break;
+//                }
+//                switch (_uiManager.tag2)
+//                {
+//                    case "Floor0_Places":
+//                        GameObject.Find("Floor0").transform.GetChild(0).GetChild(_index2).GetChild(0).gameObject.SetActive(false);
+//                        break;
+//                    case "Floor1_Places":
+//                        GameObject.Find("Floor1").transform.GetChild(0).GetChild(_index2).GetChild(0).gameObject.SetActive(false);
+//                        break;
+//                    case "Floor2_Places":
+//                        GameObject.Find("Floor2").transform.GetChild(0).GetChild(_index2).GetChild(0).gameObject.SetActive(false);
+//                        break;
+//                }
+//            }
+            
+            
+            //TODO CONTROL FLOOR
+            if (!_uiManager.StartObject.CompareTag(_uiManager.FinishObject.tag)) //DIFFERENT FLOOR CONTROL
+            {
+                if (_uiManager.StartObject.CompareTag("Floor0_Places"))
+                {
+                    
+                    //MERDİVENLER SIKINTILI
+                    //EN YAKIN MERDİVENE YÖNLENDİR
+                    GameObject stair1 = GameObject.Find("Giris-Merdiven").gameObject;
+                    GameObject stair2 = GameObject.Find("Kantin-Merdiven").gameObject;
+                    Vector3 dist1 = _uiManager.StartObject.transform.position - stair1.transform.position;
+                    Vector3 dist2 = _uiManager.FinishObject.transform.position - stair2.transform.position;
+                    _pointRoot = GameObject.Find("Floor0").transform.GetChild(1).gameObject;
+                    if (dist1.sqrMagnitude < dist2.sqrMagnitude)
+                    {
+                        Debug.Log("giris daha yakin");
+                        StartPosition.position = _pointRoot.transform
+                            .GetChild(_uiManager.StartObject.transform.GetSiblingIndex()).transform.position;
+                        
+                        TargetPosition.position = _pointRoot.transform.GetChild(stair1.transform.GetSiblingIndex())
+                            .transform.position;
+                        
+                        
+
+                    }
+                    else
+                    {
+                        Debug.Log("kantin daha yakin");
+                        StartPosition.position = _pointRoot.transform
+                            .GetChild(_uiManager.StartObject.transform.GetSiblingIndex()).transform.position;
+                        TargetPosition.position = _pointRoot.transform.GetChild(stair2.transform.GetSiblingIndex())
+                            .transform.position;
+
+                    }
+                }
+            }
+            else
+            {
+                if (_uiManager.StartObject.CompareTag("Floor0_Places"))
+                {
+                    _pointRoot = GameObject.Find("Floor0").transform.GetChild(1).gameObject;
+                    //FLOOR 0 ROOT PLACE
+                }
+                else if (_uiManager.StartObject.CompareTag("Floor1_Places"))
+                {
+                    _pointRoot = GameObject.Find("Floor1").transform.GetChild(1).gameObject;
+                    //FLOOR 1 ROOT PLACE
+                }
+                else if (_uiManager.StartObject.CompareTag("Floor2_Places"))
+                {
+                    _pointRoot = GameObject.Find("Floor2").transform.GetChild(1).gameObject;
+                    //FLOOR 2 ROOT PLACE
+                }
+
+                StartPosition.position = _pointRoot.transform
+                    .GetChild(_uiManager.StartObject.transform.GetSiblingIndex()).transform.position;
+
+
+                TargetPosition.position = _pointRoot.transform
+                    .GetChild(_uiManager.FinishObject.transform.GetSiblingIndex()).transform.position;
+                
+                
+            }
+                            
+            _uiManager.StartObject.transform.GetChild(0).gameObject.SetActive(true);
+            _uiManager.FinishObject.transform.GetChild(0).gameObject.SetActive(true);
+            
+            
             _index1 = _uiManager.StartLocIndex;
             _index2 = _uiManager.FinishLocIndex;
+   
+            
             FindPath(StartPosition.position, TargetPosition.position);//Find a path to the goal
-            _gridReference.DrawPath();
-            Variables.Instance().isLocationSelected = false;
-            _firstLocationSelect = true;
-        }
 
+
+            _gridReference.DrawPath();
+            
+            Variables.Instance().isLocationSelected = false;
+            
+            _firstLocationSelect = true;
+            
+        }
+    }
+
+    private void Update()//Every frame
+    {
+
+        LocationSettings();
+        
+        
         if (gameObject.transform.childCount > 0 && Variables.Instance().selectedPlayButton)
         {
+            _childs = GameObject.FindGameObjectsWithTag("pathCube");
             //OrderPath(StartPosition.position);
             _sphere.SetActive(true);
             _sphere.transform.position = gameObject.transform.GetChild(0).position;
@@ -75,11 +190,9 @@ public class Pathfinding : MonoBehaviour
         {
             for (int j = 1; j < _childs.Length; j++)
             {
-                if (Vector3.Distance(startPos,_childs[j].transform.position)< Vector3.Distance(startPos,_childs[i].transform.position))
+                if (Vector3.Distance(startPos,_childs[j].transform.position) < Vector3.Distance(startPos,_childs[i].transform.position))
                 {
-                    _childs[j].transform.SetSiblingIndex(i);
-                    _childs[i].transform.SetSiblingIndex(j);
-                    //TODO NEW ORDER PATH OBJECT TO NEW GAMBLE
+                    //Debug.Log(_childs[i].transform.GetSiblingIndex());
                 }
             }
         }
@@ -93,7 +206,7 @@ public class Pathfinding : MonoBehaviour
         //_sphere.SetActive(false);
     }
 
-    IEnumerator Wait()
+    private IEnumerator Wait()
     {
         _sphere.SetActive(true);
         for (int i = 1; i < gameObject.transform.childCount; i++)
@@ -174,7 +287,7 @@ public class Pathfinding : MonoBehaviour
 
     }
 
-    int GetManhattenDistance(Node aNodeA, Node aNodeB)
+    private int GetManhattenDistance(Node aNodeA, Node aNodeB)
     {
         var ix = Mathf.Abs(aNodeA.iGridX - aNodeB.iGridX);//x1-x2
         var iy = Mathf.Abs(aNodeA.iGridY - aNodeB.iGridY);//y1-y2

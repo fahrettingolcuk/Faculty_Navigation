@@ -16,7 +16,7 @@ public class Variables : MonoBehaviour
     public Button floor0Button;
     public Button floor1Button;
     public Button floor2Button;
-
+    
     private static Variables _instance;
     
     
